@@ -32,11 +32,10 @@ def main():
     distance_matrix = calculate_distance(matrix, metric)
 
     new_df = pd.DataFrame(distance_matrix)
-    new_df["sample_name"]=sample_name
+    new_df.set_index(pd.Series(sample_name), inplace=True)
+    new_df.columns = sample_name
     
     new_df.to_csv(output_file)
-
-
 
 
 if __name__ == "__main__":
